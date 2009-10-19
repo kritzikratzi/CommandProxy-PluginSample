@@ -19,6 +19,13 @@ import org.json.JSONObject;
 import commandproxy.core.Command;
 import commandproxy.core.CommandException;
 
+/**
+ * A slightly more complex example, 
+ * this allows you to take screenshots. 
+ * Crazy! 
+ * 
+ * @author hansi
+ */
 public class Screenshot implements Command{
 
 	public JSONObject execute( Map<String, String> params ) throws CommandException, JSONException {
@@ -33,11 +40,11 @@ public class Screenshot implements Command{
 		}
 		
 		try{
-			dest = new File( params.get( "dest" ) ); 
+			dest = new File( params.get( "file" ) ); 
 		}
 		catch( Exception e ){
 			try {
-				dest = File.createTempFile( "commandproxy", "screenshot" );
+				dest = File.createTempFile( "commandproxy", "screenshot.png" );
 			}
 			catch (IOException ioe ){
 				throw new CommandException( "Failed to create temp file, try using the dest parameter!", this, ioe );
@@ -65,13 +72,13 @@ public class Screenshot implements Command{
 		
 		
 		JSONObject result = new JSONObject();
-		result.put( "dest", dest.getAbsolutePath() );
+		result.put( "file", dest.getAbsolutePath() );
 		result.put( "screenNr", screenNr );
 		
 		return result; 
 	}
 
 	public String getName() {
-		return "screenShot"; 
+		return "screenshot"; 
 	}
 }
