@@ -1,0 +1,36 @@
+<html> 
+<head> 
+    <title>Hello Commandproxy!</title> 
+    <script type="text/javascript" src="assets/AIRAliases.js"></script> 
+    <script type="text/javascript" src="assets/CommandProxy.js"></script>
+    <script type="text/javascript" src="assets/json2.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/style.css"></link>
+	<script>
+		function sendCommand(){
+			var cmd = document.getElementById( "command" ).value;
+			CommandProxy.call( cmd, {}, function( json ){
+				// "json" is already an object you could work with,
+				// however, we want to display the output as a string 
+				// so we need to serialize it again. 
+				var result = document.getElementById( "result" );
+				var text = 
+					new Date().toLocaleString() + "\n" + 
+					"Response JSON: \n- - -\n" + 
+					JSON.stringify( json ); 
+				
+				result.firstChild.nodeValue = text; 
+			} );
+		}
+	</script>
+</head> 
+	<body style="margin: 20px; padding: 0px; overflow: hidden; ">
+		<form>
+			Command: 
+			<input type="text" id="command" value="helloWorld" />
+			<input type="button" value="send" onclick="sendCommand();" />
+			
+			<br />
+			<textarea id="result">press "send" above to see the result here</textarea>
+		</form>
+	</body>
+</html>

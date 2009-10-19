@@ -1,0 +1,17 @@
+body {
+	font-family: arial, helvetica; 
+	font-size: 12px; 
+	background-color: white; 
+}
+
+#command {
+	width: 200px; 
+	border: 1px solid #555; 
+	font-family: arial, helvetica; 
+	font-size: 12px; 
+}
+
+#result {
+	width: 400px; 
+	height: 300px; 
+}

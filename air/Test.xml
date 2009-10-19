@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/1.1">
+  <filename>CommandProxyTest</filename>
+  <name>CommandProxy Test</name>
+  <copyright>GPLness</copyright>
+  <customUpdateUI>false</customUpdateUI>
+  <id>CommandProxyTest</id>
+  <version>1</version>
+  <initialWindow>
+    <content>Test.html</content>
+    <height>500</height>
+    <width>500</width>
+    <systemChrome>standard</systemChrome>
+    <transparent>false</transparent>
+    <visible>true</visible>
+  </initialWindow>
+  <icon>
+  	<image128x128>assets/icon.png</image128x128>
+  </icon>
+</application>

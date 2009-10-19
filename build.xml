@@ -1,0 +1,32 @@
+<project name="CommandProxy Sample Plugin">
+	<property name="plugin.name" value="demo" />
+	<path id="lib.compile">
+		<fileset dir="lib" includes="**/*.jar" />
+		<fileset dir="build-dependencies" includes="**/*.jar" />
+	</path>
+	<fileset id="lib.export" dir="lib" includes="**/*.jar"/>
+	
+	<target name="compile" description="Compiles the source code">
+		<mkdir dir="bin" />
+		<javac target="1.5" srcdir="src" destdir="bin" classpathref="lib.compile" />
+	</target>
+	
+	
+	<target name="release" depends="compile" description="Exports this plugin">
+		<mkdir dir="release" />
+		<jar destfile="release/${plugin.name}.jar">
+			<zipgroupfileset refid="lib.export" />
+			<fileset dir="bin" excludes="commandproxy/dev/**"/>
+		</jar>
+	</target>
+	
+	
+	<target name="run" depends="compile" description="Runs a test-version of your plugin">
+		<java classname="commandproxy.dev.PluginRunner" fork="true" classpathref="lib.compile" classpath="bin" />
+	</target>
+	
+	
+	<target name="clean" description="Deletes the output folder">
+		<delete dir="bin" />
+	</target>
+</project>
